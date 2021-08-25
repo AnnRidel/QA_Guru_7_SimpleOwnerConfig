@@ -15,4 +15,13 @@ public class WebTests {
         assertThat(config.browserVersion()).isEqualTo("92.0");
         assertThat(config.remoteWebDriver()).isEqualTo(false);
     }
+
+    @Test
+    public void testWebRemote() {
+        System.setProperty("remote", "remote");
+        WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
+        assertThat(config.browserName()).isEqualTo("opera");
+        assertThat(config.browserVersion()).isEqualTo("75.0");
+        assertThat(config.remoteWebDriver()).isEqualTo(true);
+    }
 }
